@@ -7,6 +7,7 @@ import { signToken } from '../../../utils/auth';
 const handler = nc();
 
 handler.post(async (req, res) => {
+  res.set('Access-Control-Allow-Origin', 'http://localhost:3000');
   await db.connect();
   const user = await User.findOne({ email: req.body.email });
   await db.disconnect();
